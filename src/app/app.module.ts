@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CountryList } from './country-list.component/country-list.component.component';
-import { CountryDetails } from './country-details.component/country-details.component.component';
+import { CountryListComponent } from './components/country-list/country-list.component';
+import { CountryDetailsComponent } from './components/country-details/country-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CountryList.ComponentComponent,
-    CountryDetails.ComponentComponent
+    CountryListComponent,
+    CountryDetailsComponent
   ],
   imports: [
     BrowserModule,
