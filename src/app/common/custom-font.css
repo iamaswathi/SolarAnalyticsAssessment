@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('/src/assets/fonts/NunitoSans-Black.ttf') format('ttf'), url('/src/assets/fonts/NunitoSans-Bold.ttf') format('ttf'), url('/src/assets/fonts/NunitoSans-Regular.ttf') format('ttf');
+    font-style: normal;
+}
