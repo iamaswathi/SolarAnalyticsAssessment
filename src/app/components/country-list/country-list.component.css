@@ -1,0 +1,115 @@
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.countries {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+}
+
+.countries li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+}
+
+.countries li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+}
+
+.countries li.selected {
+    background-color: #CFD8DC;
+    color: white;
+}
+
+.countries li.selected:hover {
+    background-color: #BBD8DC;
+    color: white;
+}
+
+.countries .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color: #405061;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 30px 0;
+}
+
+.flexColumn {
+    width: 20%;
+}
+
+label {
+    font-weight: 600;
+}
+
+ul.borderCountries {
+    display: inline-block;
+    padding: 0;
+}
+
+ul.borderCountries li {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    width: 100px;
+    margin: 0 4px;
+    padding: 4px;
+    text-align: center;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+}
+
+.backButton {
+    padding: 8px 4px;
+    width: 100px;
+    text-align: center;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background: #fff;
+}
+
+.theCard {
+    margin: 50px 10px 0 10px !important;
+    border: 1px solid #000 !important;
+}
+
+.theCardTitle {
+    font-weight: 800;
+}
+
+.theCardBody {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    font-size: 14px;
+}
+
+.theCardBody span {}
+
+.selectedCountry h4 {
+    font-weight: 800;
+}

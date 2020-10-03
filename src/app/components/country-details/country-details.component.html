@@ -1,1 +1,26 @@
-<p>country-details works!</p>
+<div *ngIf="country">
+    <h2>{{country.name}}</h2>
+    <div>
+        <div><span>Native Name: </span>{{country.name}}</div>
+        <div><span>Population: </span>{{country.population}}</div>
+        <div><span>region: </span>{{country.region}}</div>
+        <div><span>Sub Region: </span>{{country.subregion}}</div>
+        <div><span>Capital: </span>{{country.capital}}</div>
+    </div>
+    <div>
+        <div><span>Top Level Domain: </span>{{country.capital}}</div>
+        <div><span>Currencies: </span>{{country.region}}</div>
+        <div><span>Languages: </span>{{country.capital}}</div>
+    </div>
+
+    <div>
+        <div><span>Border Countries: </span>{{country.capital}}</div>
+    </div>
+    <!-- <div>
+      <label>name:
+        <input [(ngModel)]="country.name" placeholder="name"/>
+      </label>
+    </div> -->
+    <button (click)="goBack()">go back</button>
+    <!-- <button (click)="save()">save</button> -->
+</div>

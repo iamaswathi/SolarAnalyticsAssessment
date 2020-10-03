@@ -1,1 +1,85 @@
-<p>country-list works!</p>
+<button class="backButton"><i class="far fa-arrow-left"></i>Back</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="search-country">
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a country">
+        </div>
+        <!-- </div>
+    <div class="row"> -->
+        <div *ngFor="let country of countries | filter:searchText" class=" col-xs-12 col-md-3">
+            <div class="theCard">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="theCardBody">
+                    <h5 class="theCardTitle">{{country.name}}</h5>
+                    <div>
+                        <label>Population: &nbsp;</label>
+                        <span>{{country.population}}</span>
+                    </div>
+                    <div>
+                        <label>Region: &nbsp;</label>
+                        <span>{{country.region}}</span>
+                    </div>
+                    <div>
+                        <label>Capital: &nbsp;</label>
+                        <span>{{country.capital}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <ul class="countries">
+    <li *ngFor="let country of countries" (click)="onSelect(country)" [class.selected]="country === selectedCountry" (click)="onSelect(country)">
+        {{country.name}}
+    </li> -->
+<!-- <a routerLink="/app-country-details/{{country.name}}">
+            <span class="badge">{{country.name}}</span>
+        </a> -->
+
+<!-- <a [routerLink]="['/country', country.name]">
+            <span class="badge">{{ country.name }}</span>
+        </a> -->
+<!-- </li> -->
+<!-- </ul> -->
+
+<div class="selectedCountry" *ngIf="selectedCountry">
+
+    <h4>{{selectedCountry.name}}</h4>
+
+    <div class="flexContainer">
+        <div class="flexColumn">
+            <div><label>Native Name: &nbsp;</label>{{selectedCountry.name}}</div>
+            <div><label>Population: &nbsp;</label>{{selectedCountry.population}}</div>
+            <div><label>Region: &nbsp;</label>{{selectedCountry.region}}</div>
+            <div><label>Sub Region: &nbsp;</label>{{selectedCountry.subregion}}</div>
+            <div><label>Capital: &nbsp;</label>{{selectedCountry.capital}}</div>
+        </div>
+        <div class="flexColumn">
+            <div><label>Top Level Domain: &nbsp;</label><span *ngIf="selectedCountry.topLevelDomain">
+                <span *ngFor="let domain of selectedCountry.topLevelDomain">{{domain}}</span>
+                </span>
+            </div>
+            <div><label>Currencies: &nbsp;</label><span *ngIf="selectedCountry.currencies">
+                <span *ngFor="let currency of selectedCountry.currencies">{{currency.name}}</span>
+                </span>
+            </div>
+            <div><label>Languages: &nbsp;</label><span *ngIf="selectedCountry.languages">
+                <span *ngFor="let language of selectedCountry.languages">{{language.name}}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div><label>Border Countries: </label>
+            <ul class="borderCountries">
+                <li>AAA</li>
+                <li>AAA</li>
+                <li>AAA</li>
+                <li>AAA</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
