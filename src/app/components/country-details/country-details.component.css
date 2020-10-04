@@ -1,0 +1,58 @@
+.backButton {
+    padding: 8px 4px;
+    width: 130px;
+    text-align: center;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background: #fff;
+}
+
+.backButton i {
+    margin: 0 15px 0 0;
+}
+
+.paddingT30 {
+    padding: 30px 0 0 0 !important;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 30px 0;
+    flex-wrap: wrap;
+    font-size: 16px;
+}
+
+.flexContainer h4 {
+    font-weight: 600;
+}
+
+.flexColumn {
+    /* width: 20%; */
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: 600;
+}
+
+ul.borderCountries {
+    display: inline-block;
+    padding: 0;
+}
+
+ul.borderCountries li {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    width: 100px;
+    margin: 0 8px 0 0;
+    padding: 4px;
+    text-align: center;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+}
+
+.marginTB50 {
+    margin: 50px 0;
+}

@@ -1,26 +1,76 @@
-<div *ngIf="country">
-    <h2>{{country.name}}</h2>
-    <div>
-        <div><span>Native Name: </span>{{country.name}}</div>
-        <div><span>Population: </span>{{country.population}}</div>
-        <div><span>region: </span>{{country.region}}</div>
-        <div><span>Sub Region: </span>{{country.subregion}}</div>
-        <div><span>Capital: </span>{{country.capital}}</div>
-    </div>
-    <div>
-        <div><span>Top Level Domain: </span>{{country.capital}}</div>
-        <div><span>Currencies: </span>{{country.region}}</div>
-        <div><span>Languages: </span>{{country.capital}}</div>
-    </div>
+<ng-container>
+    <div class="container">
+        <div class="col-12 col-sm-4 marginTB50">
+            <button class="backButton"><i class="fa fa-arrow-left"></i>Back</button>
+        </div>
 
-    <div>
-        <div><span>Border Countries: </span>{{country.capital}}</div>
+        <div class="selectedCountry" *ngIf="selectedCountry">
+
+            <div class="flexContainer">
+                <div class="flexColumn col-12 col-lg-4">
+                    <img src={{selectedCountry.flag}} class="card-img-top" alt={{selectedCountry.name}}>
+                </div>
+                <div class="flexColumn col-12 col-lg-8 paddingT30">
+                    <div class="flexContainer">
+                        <div class="flexColumn col-12">
+                            <h4>{{selectedCountry.name}}</h4>
+                        </div>
+                        <div class="flexColumn col-12 col-lg-6">
+                            <div><label>Native Name: &nbsp;</label>{{selectedCountry.name}}</div>
+                            <div><label>Population: &nbsp;</label>{{selectedCountry.population}}</div>
+                            <div><label>Region: &nbsp;</label>{{selectedCountry.region}}</div>
+                            <div><label>Sub Region: &nbsp;</label>{{selectedCountry.subregion}}</div>
+                            <div><label>Capital: &nbsp;</label>{{selectedCountry.capital}}</div>
+                        </div>
+                        <div class="flexColumn col-12 col-lg-6">
+                            <div><label>Top Level Domain: &nbsp;</label><span *ngIf="selectedCountry.topLevelDomain">
+                            <span *ngFor="let domain of selectedCountry.topLevelDomain; let isLast=last">{{domain}}{{isLast ? '' : ', '}}</span>
+                                </span>
+                            </div>
+                            <div><label>Currencies: &nbsp;</label><span *ngIf="selectedCountry.currencies">
+                            <span *ngFor="let currency of selectedCountry.currencies; let c=last">{{currency.name}}{{c ? '' : ', '}}</span>
+                                </span>
+                            </div>
+                            <div><label>Languages: &nbsp;</label><span *ngIf="selectedCountry.languages">
+                            <span *ngFor="let language of selectedCountry.languages; let l=last">{{language.name}}{{l ? '' : ', '}}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flexColumn col-12">
+                            <div><label>Border Countries: &nbsp;</label>
+                                <ul class="borderCountries">
+                                    <li>AAA</li>
+                                    <li>AAA</li>
+                                    <li>AAA</li>
+                                    <li>AAA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div>
+                <div><label>Border Countries: </label>
+                    <ul class="borderCountries">
+                        <li>AAA</li>
+                        <li>AAA</li>
+                        <li>AAA</li>
+                        <li>AAA</li>
+                    </ul>
+                </div>
+            </div> -->
+
+        </div>
     </div>
-    <!-- <div>
-      <label>name:
-        <input [(ngModel)]="country.name" placeholder="name"/>
-      </label>
-    </div> -->
-    <button (click)="goBack()">go back</button>
-    <!-- <button (click)="save()">save</button> -->
-</div>
+</ng-container>
+
+<!-- <div *ngIf="country$ | async as country">
+    <h3>"{{ country.name }}"</h3>
+    <div>
+        <label>Name: </label>{{ country.name }}</div>
+    <p>
+        <button (click)="gotoCountry(country)">Back</button>
+    </p>
+</div> -->

@@ -1,37 +1,59 @@
-<button class="backButton"><i class="far fa-arrow-left"></i>Back</button>
-<div class="container-fluid">
+<ng-container *ngIf="errorApi">
+    <p>API error happened.</p>
+</ng-container>
+
+<ng-container *ngIf="!countries && loading">
+    <p><i class="fa fa-spinner"></i>&nbsp;Loading...</p>
+</ng-container>
+
+<div class="container">
     <div class="row">
-        <div class="search-country">
-            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a country">
+        <div class="col-md-4 search-country input-wrapper">
+            <input class="form-control" type="text" name="countrysearch" [(ngModel)]="countrySearch" autocomplete="off" placeholder="  Search for a country...">
         </div>
-        <!-- </div>
-    <div class="row"> -->
-        <div *ngFor="let country of countries | filter:searchText" class=" col-xs-12 col-md-3">
-            <div class="theCard">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="theCardBody">
-                    <h5 class="theCardTitle">{{country.name}}</h5>
-                    <div>
-                        <label>Population: &nbsp;</label>
-                        <span>{{country.population}}</span>
-                    </div>
-                    <div>
-                        <label>Region: &nbsp;</label>
-                        <span>{{country.region}}</span>
-                    </div>
-                    <div>
-                        <label>Capital: &nbsp;</label>
-                        <span>{{country.capital}}</span>
+        <div class="col-md-2 ml-auto search-country">
+            <select [(ngModel)]="regionSearch" ngbDropdown class="d-inline-block">
+                <option [ngValue]="undefined" selected>Filter by Region</option>
+                <option  [ngValue]="regions[i]" *ngFor="let region of regions; let i = index">
+                    {{region}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <ng-container *ngIf="countries">
+        <div class="row">
+            <div *ngFor="let country of countries | searchFilter: countrySearch : regionSearch" class="col-12 col-sm-6 col-lg-3">
+                <div class="theCard">
+                    <img src={{country.flag}} class="card-img-top flag" alt={{country.name}}>
+                    <div class="theCardBody">
+                        <h5 class="theCardTitle">{{country.name}}</h5>
+                        <div>
+                            <label>Population: &nbsp;</label>
+                            <span>{{country.population}}</span>
+                        </div>
+                        <div>
+                            <label>Region: &nbsp;</label>
+                            <span>{{country.region}}</span>
+                        </div>
+                        <div>
+                            <label>Capital: &nbsp;</label>
+                            <span>{{country.capital}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div *ngIf="(countries | searchFilter: countrySearch : regionSearch).length === 0">
+            <div class="container">
+                <p class="text-center">No results found for the above search/filter criteria.</p>
+            </div>
+        </div>
+    </ng-container>
 </div>
 
 <!-- <ul class="countries">
     <li *ngFor="let country of countries" (click)="onSelect(country)" [class.selected]="country === selectedCountry" (click)="onSelect(country)">
-        {{country.name}}
+        {{country.region}}
     </li> -->
 <!-- <a routerLink="/app-country-details/{{country.name}}">
             <span class="badge">{{country.name}}</span>

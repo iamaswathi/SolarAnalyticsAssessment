@@ -2,6 +2,10 @@
     font-family: 'Nunito Sans', sans-serif;
 }
 
+.noPadding {
+    padding: 0 !important;
+}
+
 .countries {
     margin: 0 0 2em 0;
     list-style-type: none;
@@ -51,48 +55,8 @@
     border-radius: 4px 0 0 4px;
 }
 
-.flexContainer {
-    display: flex;
-    flex-direction: row;
-    margin: 0 0 30px 0;
-}
-
-.flexColumn {
-    width: 20%;
-}
-
-label {
-    font-weight: 600;
-}
-
-ul.borderCountries {
-    display: inline-block;
-    padding: 0;
-}
-
-ul.borderCountries li {
-    display: inline-block;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    width: 100px;
-    margin: 0 4px;
-    padding: 4px;
-    text-align: center;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-}
-
-.backButton {
-    padding: 8px 4px;
-    width: 100px;
-    text-align: center;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    background: #fff;
-}
-
 .theCard {
-    margin: 50px 10px 0 10px !important;
+    margin: 0 0 30px 0 !important;
     border: 1px solid #000 !important;
 }
 
@@ -112,4 +76,66 @@ ul.borderCountries li {
 
 .selectedCountry h4 {
     font-weight: 800;
+}
+
+.search-country {
+    margin: 0 0 30px 0;
+}
+
+
+/* .errspan {
+    float: right;
+    margin-right: 6px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 2;
+    color: red;
+} */
+
+.input-wrapper {
+    display: inline-block;
+    position: relative
+}
+
+.input-wrapper input {
+    padding-left: 35px;
+}
+
+.input-wrapper:after {
+    font-family: 'FontAwesome' !important;
+    content: '\f002';
+    position: absolute;
+    left: 26px;
+    top: 6px;
+}
+
+i {
+    font-family: 'FontAwesome' !important;
+}
+
+*:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: initial;
+}
+
+select {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+}
+
+.flag {
+    height: 160px;
 }

@@ -6,8 +6,8 @@ import { CountryDetailsComponent } from './components/country-details/country-de
 const routes: Routes = [
   { path: 'countries', redirectTo: '/countries' },
   { path: 'country/:name', redirectTo: '/country/:name' },
-  { path: 'countries',  component: CountryListComponent, data: { animation: 'heroes' } },
-  { path: 'country/:name', component: CountryDetailsComponent, data: { animation: 'hero' } }
+  { path: 'countries',  component: CountryListComponent, data: { animation: 'countries' } },
+  { path: 'country/:name', component: CountryDetailsComponent, data: { animation: 'country' } }
 ];
 
 @NgModule({

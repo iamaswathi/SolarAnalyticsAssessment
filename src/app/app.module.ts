@@ -9,8 +9,10 @@ import { CountryDetailsComponent } from './components/country-details/country-de
 import { CountryService } from './services/country.service';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchFilterCountryComponent } from './components/search-filter-country/search-filter-country.component';
-
+import { SearchFilterPipe } from '../app/utils/pipes/search-filter.pipe';
 import { FormsModule } from '@angular/forms';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { FormsModule } from '@angular/forms';
     CountryListComponent,
     CountryDetailsComponent,
     HeaderComponent,
-    SearchFilterCountryComponent
+    SearchFilterCountryComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgbModule
   ],
   providers: [CountryService],
   bootstrap: [AppComponent]

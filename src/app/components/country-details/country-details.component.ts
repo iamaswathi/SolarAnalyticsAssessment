@@ -13,6 +13,8 @@ import { Country } from '../../common/country';
 export class CountryDetailsComponent implements OnInit {
 
   country: Country;
+  countries: Country[];
+  selectedCountry: Country;
 
   constructor(
     private _countryService: CountryService,
@@ -21,7 +23,19 @@ export class CountryDetailsComponent implements OnInit {
     private _location: Location,) { }
 
   ngOnInit(): void {
-    this.getCountry();
+    // this.getCountry();
+    this.getCountries();
+  }
+  getCountries(): void {
+    this._countryService.getCountriesList().subscribe(
+      (success) => {
+      if(success)
+      this.countries = success;
+      this.selectedCountry = this.countries[0];
+    },
+    (error) => {
+      console.log('Error state from API: ', error)}
+    );
   }
 
   getCountry(): void {
