@@ -24,7 +24,10 @@ export class CountryService {
     // private _messageService: 
     ) { }
 
-  /** GET country list from the server */
+  /**
+   * getCountriesList - returns a list of countries from the server
+   * after making an http request
+   */
   getCountriesList(): Observable<Country[]> {
     return this._httpClient.get<Country[]>(this._countriesUrl)
       .pipe(
@@ -33,8 +36,11 @@ export class CountryService {
       );
   }
 
-  /** GET hero by id. Will 404 if id not found */
-  getCountry(name: string): Observable<Country> {
+  /**
+   * getCountryByName - returns a country object by its name
+   * @param name - name of the country
+   */
+  getCountryByName(name: string): Observable<Country> {
     const url = `${this._countryByNameURl}/${name}`;
     return this._httpClient.get<Country>(url).pipe(
       tap(_ => console.log(`fetched hero id=${name}`)),
@@ -43,8 +49,7 @@ export class CountryService {
   }
 
   /**
-   * Handle Http operation that failed.
-   * Let the app continue.
+   * handleError - Handles the Http operation that failed.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */

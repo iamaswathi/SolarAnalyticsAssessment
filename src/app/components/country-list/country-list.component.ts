@@ -13,11 +13,12 @@ export class CountryListComponent implements OnInit {
 
   countries: Country[];
   selectedCountry: Country;
-  regionSearch;
-  countrySearch;
+  regionSearch: any;
+  countrySearch: any;
   regions: string[];
   errorApi = false;
   loading = false;
+  countryCodeAndNameList: any;
 
 
   constructor(private _countryService: CountryService) { }
@@ -35,7 +36,6 @@ export class CountryListComponent implements OnInit {
       this.loading = true;
       if(success)
       this.countries = success;
-      // console.log(this.countries);
       this.loading = false;
 
       // Fetching the list of regions
@@ -58,9 +58,9 @@ export class CountryListComponent implements OnInit {
     countriesList.forEach(function (value) {
       temp.push(value.region);
     });
-    // Filtering unique regions from the overall regions
+    // Filtering unique regions from the overall regions,
+    // to display unique regions in the filter dropdown
     this.regions = Utils.getUniqueValues(temp);
-    // console.log('Regions -> ', this.regions);
   }
 
   onSelect(country: Country): void {

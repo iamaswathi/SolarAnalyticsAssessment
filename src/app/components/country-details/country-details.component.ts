@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../common/country';
+import Utils from '../../utils/utils';
+import { NAME, COUNTRYCODE3 } from '../../common/common.constants';
 
 @Component({
   selector: 'app-country-details',
@@ -15,6 +17,8 @@ export class CountryDetailsComponent implements OnInit {
   country: Country;
   countries: Country[];
   selectedCountry: Country;
+  countryCodeAndNameList: JSON;
+  boderCountries = [];
 
   constructor(
     private _countryService: CountryService,
@@ -23,7 +27,7 @@ export class CountryDetailsComponent implements OnInit {
     private _location: Location,) { }
 
   ngOnInit(): void {
-    // this.getCountry();
+    this.getCountry();
     this.getCountries();
   }
   getCountries(): void {
@@ -32,6 +36,16 @@ export class CountryDetailsComponent implements OnInit {
       if(success)
       this.countries = success;
       this.selectedCountry = this.countries[0];
+      if(this.countries) {
+        this.countryCodeAndNameList = Utils.makeKeyValueJson(this.countries, COUNTRYCODE3, NAME);
+      }
+      if(this.selectedCountry) {
+        for (let i=0; i<this.selectedCountry.borders.length; i++) {
+            this.boderCountries.push(this.countryCodeAndNameList[this.selectedCountry.borders[i]])
+        }
+        this.boderCountries = this.boderCountries.sort();
+        console.log('.boderCountries -> ', this.boderCountries);
+      }
     },
     (error) => {
       console.log('Error state from API: ', error)}
@@ -40,10 +54,18 @@ export class CountryDetailsComponent implements OnInit {
 
   getCountry(): void {
     const name = this._route.snapshot.paramMap.get('name');
-    this._countryService.getCountry(name)
+    this._countryService.getCountryByName('Belgium')
       .subscribe(country => {
         this.country = country;
         console.log(this.country);
+        if(this.country) {
+          for (let i=0; i<this.country.borders.length; i++) {
+            // if(this.country.borders[i] === ) {
+              this.boderCountries.push(this.countryCodeAndNameList[this.country.borders[i]])
+            // }
+          }
+          console.log('.boderCountries -> ', this.boderCountries);
+        }
       });
   }
 
