@@ -23,4 +23,3 @@
 2. Run `npm install`
 3. Run `ng serve`, the code in index.js file gets executed and the output can be viewed in the console.
 4. To execute the test cases, hit command `npm run test`.
-
