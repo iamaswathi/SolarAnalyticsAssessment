@@ -1,3 +1,7 @@
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
 .navbar {
     margin-bottom: 30px;
 }
@@ -8,4 +12,19 @@
 
 .paddingR5 {
     padding-right: 5px;
+}
+
+#themeButton {
+    display: none;
+}
+
+#themeButton+label:before {
+    content: "\f186";
+    padding-right: 5px;
+    font-family: 'FontAwesome' !important;
+}
+
+#themeButton:checked+label:before {
+    /* content: "\f0aa"; */
+    color: red;
 }

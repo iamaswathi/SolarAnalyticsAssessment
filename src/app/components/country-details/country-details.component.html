@@ -1,7 +1,15 @@
 <ng-container>
+    <div *ngIf="errorApi" class="container ">
+        <p class="text-center">API error happened.</p>
+    </div>
+
+    <div *ngIf="!selectedCountry && loading" class="container">
+        <p class="text-center"><i class="fa fa-spinner"></i>&nbsp;Loading...</p>
+    </div>
+
     <div class="container">
         <div class="col-12 col-sm-4 marginTB50">
-            <button class="backButton"><i class="fa fa-arrow-left"></i>Back</button>
+            <button class="backButton theInput" (click)="goBack()"><i class="fa fa-arrow-left"></i>Back</button>
         </div>
 
         <div class="selectedCountry" *ngIf="selectedCountry">
@@ -42,8 +50,8 @@
                                 <div class="flexColumn">
                                     <div><label>Border Countries: &nbsp;</label></div>
                                 </div>
-                                <div class="flexColumn borderCountries" *ngFor="let border of boderCountries">{{border}}</div>
-                                <div class="flexColumn" *ngIf="boderCountries.length === 0">-</div>
+                                <div class="flexColumn borderCountries theInput" *ngFor="let border of selectedCountry.borders" [routerLink]="['/countryDetail', border]">{{border}}</div>
+                                <div class="flexColumn" *ngIf="!selectedCountry.borders.length">-</div>
                             </div>
                         </div>
 
@@ -55,11 +63,4 @@
     </div>
 </ng-container>
 
-<!-- <div *ngIf="country$ | async as country">
-    <h3>"{{ country.name }}"</h3>
-    <div>
-        <label>Name: </label>{{ country.name }}</div>
-    <p>
-        <button (click)="gotoCountry(country)">Back</button>
-    </p>
-</div> -->
+<router-outlet></router-outlet>

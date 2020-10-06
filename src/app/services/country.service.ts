@@ -13,20 +13,19 @@ import { Country } from '../common/country';
 
 export class CountryService {
   private _countriesUrl = 'https://restcountries.eu/rest/v2/all';  // URL to web api
-  private _countryByNameURl = 'https://restcountries.eu/rest/v2/name/';
+  private _countryByNameURl = 'https://restcountries.eu/rest/v2/name';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(
-    private _httpClient: HttpClient,
-    // private _messageService: 
-    ) { }
+    private _httpClient: HttpClient
+  ) { }
 
   /**
-   * getCountriesList - returns a list of countries from the server
-   * after making an http request
+   * getCountriesList - returns a list of countries (of type <Country>[]) from the 
+   * server after making an http request
    */
   getCountriesList(): Observable<Country[]> {
     return this._httpClient.get<Country[]>(this._countriesUrl)
@@ -37,7 +36,7 @@ export class CountryService {
   }
 
   /**
-   * getCountryByName - returns a country object by its name
+   * getCountryByName - returns a country object (of type <Country>) by its name
    * @param name - name of the country
    */
   getCountryByName(name: string): Observable<Country> {
@@ -55,11 +54,9 @@ export class CountryService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
+      console.error(error);
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      // Transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
@@ -67,9 +64,5 @@ export class CountryService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
-  // private log(message: string) {
-  //   this._messageService.add(`CountryListService: ${message}`);
-  // }
 
 }

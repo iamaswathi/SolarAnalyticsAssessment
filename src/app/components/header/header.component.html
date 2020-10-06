@@ -1,6 +1,13 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar">
     <div class="container">
         <span class="navbar-brand mb-0 h1">Where in the World?</span>
-        <span><i class="fa fa-moon-o paddingR5"></i>Dark Mode</span>
+        <!-- <span><i ng-class="toggle ? 'fa fa-moon-o' : 'fa fa-moon'"></i></span> -->
+        <!-- <span><i class="fa fa-moon-o paddingR5"></i>Dark Mode</span> -->
+        <span>
+            <input type="checkbox" [(ngModel)]="themeToggle" #myCheckbox id="themeButton" (click)="switchClicked(myCheckbox.checked)">
+            <label for="themeButton" class="fa paddingR5">Dark Mode</label>
+        </span>
     </div>
+
+
 </nav>

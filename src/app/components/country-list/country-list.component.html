@@ -1,107 +1,55 @@
-<ng-container *ngIf="errorApi">
-    <p>API error happened.</p>
-</ng-container>
-
-<ng-container *ngIf="!countries && loading">
-    <p><i class="fa fa-spinner"></i>&nbsp;Loading...</p>
-</ng-container>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 search-country input-wrapper">
-            <input class="form-control" type="text" name="countrysearch" [(ngModel)]="countrySearch" autocomplete="off" placeholder="  Search for a country...">
-        </div>
-        <div class="col-md-2 ml-auto search-country">
-            <select [(ngModel)]="regionSearch" ngbDropdown class="d-inline-block">
+<ng-container>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 search-country input-wrapper">
+                <input class="form-control theInput" type="text" name="countrysearch" [(ngModel)]="countrySearch" autocomplete="off" placeholder="  Search for a country...">
+            </div>
+            <div class="col-md-2 ml-auto search-country">
+                <select [(ngModel)]="regionSearch" ngbDropdown class="d-inline-block theInput">
                 <option [ngValue]="undefined" selected>Filter by Region</option>
                 <option  [ngValue]="regions[i]" *ngFor="let region of regions; let i = index">
                     {{region}}
                 </option>
             </select>
+            </div>
         </div>
-    </div>
-    <ng-container *ngIf="countries">
-        <div class="row">
-            <div *ngFor="let country of countries | searchFilter: countrySearch : regionSearch" class="col-12 col-sm-6 col-lg-3">
-                <div class="theCard">
-                    <img src={{country.flag}} class="card-img-top flag" alt={{country.name}}>
-                    <div class="theCardBody">
-                        <h5 class="theCardTitle">{{country.name}}</h5>
-                        <div>
-                            <label>Population: &nbsp;</label>
-                            <span>{{country.population}}</span>
-                        </div>
-                        <div>
-                            <label>Region: &nbsp;</label>
-                            <span>{{country.region}}</span>
-                        </div>
-                        <div>
-                            <label>Capital: &nbsp;</label>
-                            <span>{{country.capital}}</span>
+
+        <div *ngIf="errorApi" class="alert alert-danger col-sm-4 mx-auto text-center" role="alert">
+            API error happened.
+        </div>
+
+        <div *ngIf="!countries && loading" class="container text-center">
+            <i class="fa fa-spinner"></i>&nbsp;Loading...
+        </div>
+
+        <div *ngIf="countries">
+            <div class="row">
+                <div *ngFor="let country of countries | searchFilter: countrySearch : regionSearch" class="col-12 col-sm-6 col-md-4 col-lg-3" [routerLink]="['/countryDetail', country.name]">
+                    <div class="theCard theElement">
+                        <img src={{country.flag}} class="card-img-top flag " alt={{country.name}}>
+                        <div class="theCardBody ">
+                            <h5 class="theCardTitle ">{{country.name}}</h5>
+                            <div>
+                                <label>Population: &nbsp;</label>
+                                <span>{{country.population}}</span>
+                            </div>
+                            <div>
+                                <label>Region: &nbsp;</label>
+                                <span>{{country.region}}</span>
+                            </div>
+                            <div>
+                                <label>Capital: &nbsp;</label>
+                                <span>{{country.capital}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="(countries | searchFilter: countrySearch : regionSearch).length === 0">
-            <div class="container">
-                <p class="text-center">No results found for the above search/filter criteria.</p>
-            </div>
-        </div>
-    </ng-container>
-</div>
-
-<!-- <ul class="countries">
-    <li *ngFor="let country of countries" (click)="onSelect(country)" [class.selected]="country === selectedCountry" (click)="onSelect(country)">
-        {{country.region}}
-    </li> -->
-<!-- <a routerLink="/app-country-details/{{country.name}}">
-            <span class="badge">{{country.name}}</span>
-        </a> -->
-
-<!-- <a [routerLink]="['/country', country.name]">
-            <span class="badge">{{ country.name }}</span>
-        </a> -->
-<!-- </li> -->
-<!-- </ul> -->
-
-<div class="selectedCountry" *ngIf="selectedCountry">
-
-    <h4>{{selectedCountry.name}}</h4>
-
-    <div class="flexContainer">
-        <div class="flexColumn">
-            <div><label>Native Name: &nbsp;</label>{{selectedCountry.name}}</div>
-            <div><label>Population: &nbsp;</label>{{selectedCountry.population}}</div>
-            <div><label>Region: &nbsp;</label>{{selectedCountry.region}}</div>
-            <div><label>Sub Region: &nbsp;</label>{{selectedCountry.subregion}}</div>
-            <div><label>Capital: &nbsp;</label>{{selectedCountry.capital}}</div>
-        </div>
-        <div class="flexColumn">
-            <div><label>Top Level Domain: &nbsp;</label><span *ngIf="selectedCountry.topLevelDomain">
-                <span *ngFor="let domain of selectedCountry.topLevelDomain">{{domain}}</span>
-                </span>
-            </div>
-            <div><label>Currencies: &nbsp;</label><span *ngIf="selectedCountry.currencies">
-                <span *ngFor="let currency of selectedCountry.currencies">{{currency.name}}</span>
-                </span>
-            </div>
-            <div><label>Languages: &nbsp;</label><span *ngIf="selectedCountry.languages">
-                <span *ngFor="let language of selectedCountry.languages">{{language.name}}</span>
-                </span>
+            <div *ngIf="(countries | searchFilter: countrySearch : regionSearch).length===0">
+                <div class="alert alert-dark col-xs-12 col-sm-8 col-md-6 mx-auto text-center" role="alert">
+                    No results found for the above search/filter criteria..
+                </div>
             </div>
         </div>
     </div>
-
-    <div>
-        <div><label>Border Countries: </label>
-            <ul class="borderCountries">
-                <li>AAA</li>
-                <li>AAA</li>
-                <li>AAA</li>
-                <li>AAA</li>
-            </ul>
-        </div>
-    </div>
-
-</div>
+</ng-container>

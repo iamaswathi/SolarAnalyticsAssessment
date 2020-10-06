@@ -1,9 +1,188 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root,
+[data-theme="light"] {
+    --font-color: hsl(200, 15%, 8%);
+    --bg-color: hsl(0, 0%, 98%);
+    --input-color: hsl(0, 0%, 52%);
+    --element-color: hsl(0, 0%, 100%);
+}
+
+[data-theme="dark"] {
+    --font-color: hsl(0, 0%, 100%);
+    --bg-color: hsl(207, 26%, 17%);
+    --input-color: hsl(0, 0%, 52%);
+    --element-color: hsl(209, 23%, 22%);
+}
+
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--font-color) !important;
+}
+
+.theInput {
+    background-color: var(--element-color);
+    color: var(--font-color) !important;
+    border: 0 !important;
+    box-shadow: 0 0 2px var(--input-color);
+}
+
+.theInput:focus {
+    box-shadow: 0 0 2px var(--input-color) !important;
+}
+
+.theElement {
+    background-color: var(--element-color);
+    box-shadow: 0 0 2px var(--input-color);
+}
+
+nav {
+    border-bottom: 2px solid var(--input-color);
+    background-color: var(--element-color);
+}
+
+
+/**/
+
+.backButton {
+    padding: 8px 4px;
+    width: 130px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.backButton i {
+    margin: 0 15px 0 0;
+}
+
+.paddingT30 {
+    padding: 30px 0 0 0 !important;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 30px 0;
+    flex-wrap: wrap;
+    font-size: 16px;
+}
+
+.flexContainer h4 {
+    font-weight: 600;
+}
+
+.flexColumn {
+    /* width: 20%; */
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: 600;
+}
+
+.borderCountries {
+    border-radius: 2px;
+    width: auto;
+    margin-right: 8px;
+    padding: 4px;
+    text-align: center;
+}
+
+.marginTB50 {
+    margin: 50px 0;
+}
+
+
+/**/
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.noPadding {
+    padding: 0 !important;
+}
+
+.theCard {
+    margin: 0 0 30px 0 !important;
+    cursor: pointer;
+}
+
+.theCardTitle {
+    font-weight: 800;
+}
+
+.theCardBody {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    font-size: 14px;
+}
+
+.theCardBody span {}
+
+.selectedCountry h4 {
+    font-weight: 800;
+}
+
+.search-country {
+    margin: 0 0 30px 0;
+}
+
+.input-wrapper {
+    display: inline-block;
+    position: relative
+}
+
+.input-wrapper input {
+    padding-left: 35px;
+}
+
+.input-wrapper:after {
+    font-family: 'FontAwesome' !important;
+    content: '\f002';
+    position: absolute;
+    left: 26px;
+    top: 6px;
+}
+
+i {
+    font-family: 'FontAwesome' !important;
+}
+
 *:focus {
     outline: none !important;
     outline-width: 0 !important;
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
+    border-color: initial;
 }
+
+select {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+}
+
+.flag {
+    height: 160px;
+}
+
+
+/* @media (max-width: 578px) {
+    .countryCard {
+        -webkit-column-count: 1;
+        column-count: 1;
+        text-align: center;
+    }
+} */

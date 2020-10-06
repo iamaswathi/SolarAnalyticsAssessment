@@ -8,7 +8,6 @@ import { CountryListComponent } from './components/country-list/country-list.com
 import { CountryDetailsComponent } from './components/country-details/country-details.component';
 import { CountryService } from './services/country.service';
 import { HeaderComponent } from './components/header/header.component';
-import { SearchFilterCountryComponent } from './components/search-filter-country/search-filter-country.component';
 import { SearchFilterPipe } from '../app/utils/pipes/search-filter.pipe';
 import { FormsModule } from '@angular/forms';
 
@@ -20,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CountryListComponent,
     CountryDetailsComponent,
     HeaderComponent,
-    SearchFilterCountryComponent,
     SearchFilterPipe
   ],
   imports: [

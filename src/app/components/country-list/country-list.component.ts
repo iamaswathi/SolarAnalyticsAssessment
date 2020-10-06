@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../common/country';
 import Utils from 'src/app/utils/utils';
+import { NAME, COUNTRYCODE3 } from '../../common/common.constants';
 
 @Component({
   selector: 'app-country-list',
@@ -19,6 +20,7 @@ export class CountryListComponent implements OnInit {
   errorApi = false;
   loading = false;
   countryCodeAndNameList: any;
+  borderCountries = [];
 
 
   constructor(private _countryService: CountryService) { }
@@ -31,9 +33,9 @@ export class CountryListComponent implements OnInit {
    * getCountries - subscibes to the list of countries returned from the server
    */
   getCountries(): void {
+    this.loading = true;
     this._countryService.getCountriesList().subscribe(
       (success) => {
-      this.loading = true;
       if(success)
       this.countries = success;
       this.loading = false;
@@ -41,6 +43,7 @@ export class CountryListComponent implements OnInit {
       // Fetching the list of regions
       if(this.countries) {
         this.getRegionsList(this.countries);
+        this.countryCodeAndNameList = Utils.makeKeyValueJson(this.countries, COUNTRYCODE3, NAME);
       }
     },
     (error) => {
@@ -61,11 +64,6 @@ export class CountryListComponent implements OnInit {
     // Filtering unique regions from the overall regions,
     // to display unique regions in the filter dropdown
     this.regions = Utils.getUniqueValues(temp);
-  }
-
-  onSelect(country: Country): void {
-    this.selectedCountry = country;
-    console.log(this.selectedCountry);
   }
 
 }
