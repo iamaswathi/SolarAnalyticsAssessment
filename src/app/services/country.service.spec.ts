@@ -26,7 +26,6 @@ describe('CountryService', () => {
 
   it(`should fetch countries as an Observable`, async(inject([HttpTestingController, CountryService],
     (httpClient: HttpTestingController, countryService: CountryService) => {
-
       const countriesList = [
         {
           "name": "Afghanistan",
@@ -190,8 +189,6 @@ describe('CountryService', () => {
           "cioc": "ALB"
         }
       ];
-
-
       countryService.getCountriesList()
         .subscribe((countries: any) => {
           expect(countries.length).toBe(3);
@@ -204,4 +201,21 @@ describe('CountryService', () => {
       httpMock.verify();
 
     })));
-  });
+
+    it('should get the single country by name', () => {
+      countryService.getCountryByName('Albania').subscribe((data: any) => {
+        expect(data[0].name).toBe('Albania');
+      });
+  
+      const req = httpMock.expectOne(`https://restcountries.eu/rest/v2/name/Albania`, 'call to get Albania');
+      expect(req.request.method).toBe('GET');
+  
+      req.flush({
+        name: 'Albania'
+      });
+  
+      httpMock.verify();
+    });
+
+});
+
