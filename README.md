@@ -10,7 +10,7 @@ A provision to switch between the Dark and Light theme modes is available at the
     2. **_CountryDetailsComponent_** - displays the country details when a country is clicked in the list view
     3. **_HeaderComponent_** - header items : provision to switch between light and dark themes
 2. Styles
-    **_styles.css_** - contains all generic styles accessing theme variables and component specific styles
+    1. **_styles.css_** - contains all generic styles accessing theme variables and component specific styles
 3. Common files
     1. **_common.constants.ts_** - contains the constants
     2. **_country.ts_** - Interface that holds the structure of Country entity
