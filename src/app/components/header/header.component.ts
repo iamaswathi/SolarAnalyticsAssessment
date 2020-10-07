@@ -1,20 +1,26 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { ThemeService } from '../../common/theme/theme.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  // @ViewChild('myCheckbox') myCheckbox: ElementRef;
-  toggle = false;
-  constructor() { }
-  themeToggle;
+export class HeaderComponent {
+  constructor(private _themeService: ThemeService) {}
 
-  ngOnInit(): void {
-  }
-  switchClicked( clicked ) {
-    if (clicked) {this.toggle = this.toggle ? false : true;}
+  /**
+   * toggle - on clicking the Dark Mode option in the header,
+   * the page theme toggles between light and dark mode.
+   * It used the ThemeService to set the selected theme.
+   */
+  toggle() {
+    const active = this._themeService.getActiveTheme() ;
+    if (active.name === 'lightTheme') {
+      this._themeService.setTheme('darkTheme');
+    } else {
+      this._themeService.setTheme('lightTheme');
+    }
   }
 
 }

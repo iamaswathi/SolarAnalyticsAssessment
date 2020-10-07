@@ -1,64 +1,66 @@
 <ng-container>
-    <div *ngIf="errorApi" class="container ">
-        <p class="text-center">API error happened.</p>
-    </div>
-
-    <div *ngIf="!selectedCountry && loading" class="container">
-        <p class="text-center"><i class="fa fa-spinner"></i>&nbsp;Loading...</p>
-    </div>
-
-    <div class="container">
-        <div class="col-12 col-sm-4 marginTB50">
-            <button class="backButton theInput" (click)="goBack()"><i class="fa fa-arrow-left"></i>Back</button>
+    <div class="bg">
+        <div *ngIf="errorApi" class="container ">
+            <p class="text-center">API error happened.</p>
         </div>
 
-        <div class="selectedCountry" *ngIf="selectedCountry">
+        <div *ngIf="!selectedCountry && loading" class="container">
+            <p class="text-center"><i class="fa fa-spinner"></i>&nbsp;Loading...</p>
+        </div>
 
-            <div class="flexContainer">
-                <div class="flexColumn col-12 col-lg-4">
-                    <img src={{selectedCountry.flag}} class="card-img-top" alt={{selectedCountry.name}}>
-                </div>
-                <div class="flexColumn col-12 col-lg-8 paddingT30">
-                    <div class="flexContainer">
-                        <div class="flexColumn col-12">
-                            <h4>{{selectedCountry.name}}</h4>
-                        </div>
-                        <div class="flexColumn col-12 col-lg-6">
-                            <div><label>Native Name: &nbsp;</label>{{selectedCountry.name}}</div>
-                            <div><label>Population: &nbsp;</label>{{selectedCountry.population}}</div>
-                            <div><label>Region: &nbsp;</label>{{selectedCountry.region}}</div>
-                            <div><label>Sub Region: &nbsp;</label>{{selectedCountry.subregion}}</div>
-                            <div><label>Capital: &nbsp;</label>{{selectedCountry.capital}}</div>
-                        </div>
-                        <div class="flexColumn col-12 col-lg-6">
-                            <div><label>Top Level Domain: &nbsp;</label><span *ngIf="selectedCountry.topLevelDomain">
-                            <span *ngFor="let domain of selectedCountry.topLevelDomain; let lastDomain=last">{{domain}}{{lastDomain ? '' : ', '}}</span>
-                                </span>
-                            </div>
-                            <div><label>Currencies: &nbsp;</label><span *ngIf="selectedCountry.currencies">
-                            <span *ngFor="let currency of selectedCountry.currencies; let lastCurrency=last">{{currency.name}}{{lastCurrency ? '' : ', '}}</span>
-                                </span>
-                            </div>
-                            <div><label>Languages: &nbsp;</label><span *ngIf="selectedCountry.languages">
-                            <span *ngFor="let language of selectedCountry.languages; let lastLanguage=last">{{language.name}}{{lastLanguage ? '' : ', '}}</span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="flexColumn col-12">
-                            <div class="flexContainer">
-                                <div class="flexColumn">
-                                    <div><label>Border Countries: &nbsp;</label></div>
-                                </div>
-                                <div class="flexColumn borderCountries theInput" *ngFor="let border of selectedCountry.borders" [routerLink]="['/countryDetail', border]">{{border}}</div>
-                                <div class="flexColumn" *ngIf="!selectedCountry.borders.length">-</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+        <div class="container">
+            <div class="col-12 col-sm-4 marginTB50">
+                <button class="backButton theInput" (click)="goBack()"><i class="fa fa-arrow-left"></i>Back</button>
             </div>
 
+            <div class="selectedCountry" *ngIf="selectedCountry">
+
+                <div class="flexContainer">
+                    <div class="flexColumn col-12 col-lg-4">
+                        <img src={{selectedCountry.flag}} class="card-img-top" alt={{selectedCountry.name}}>
+                    </div>
+                    <div class="flexColumn col-12 col-lg-8 paddingT30">
+                        <div class="flexContainer">
+                            <div class="flexColumn col-12">
+                                <h4>{{selectedCountry.name}}</h4>
+                            </div>
+                            <div class="flexColumn col-12 col-lg-6">
+                                <div><label>Native Name: &nbsp;</label>{{selectedCountry.name}}</div>
+                                <div><label>Population: &nbsp;</label>{{selectedCountry.population}}</div>
+                                <div><label>Region: &nbsp;</label>{{selectedCountry.region}}</div>
+                                <div><label>Sub Region: &nbsp;</label>{{selectedCountry.subregion}}</div>
+                                <div><label>Capital: &nbsp;</label>{{selectedCountry.capital}}</div>
+                            </div>
+                            <div class="flexColumn col-12 col-lg-6">
+                                <div><label>Top Level Domain: &nbsp;</label><span *ngIf="selectedCountry.topLevelDomain">
+                            <span *ngFor="let domain of selectedCountry.topLevelDomain; let lastDomain=last">{{domain}}{{lastDomain ? '' : ', '}}</span>
+                                    </span>
+                                </div>
+                                <div><label>Currencies: &nbsp;</label><span *ngIf="selectedCountry.currencies">
+                            <span *ngFor="let currency of selectedCountry.currencies; let lastCurrency=last">{{currency.name}}{{lastCurrency ? '' : ', '}}</span>
+                                    </span>
+                                </div>
+                                <div><label>Languages: &nbsp;</label><span *ngIf="selectedCountry.languages">
+                            <span *ngFor="let language of selectedCountry.languages; let lastLanguage=last">{{language.name}}{{lastLanguage ? '' : ', '}}</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="flexColumn col-12">
+                                <div class="flexContainer">
+                                    <div class="flexColumn">
+                                        <div><label>Border Countries: &nbsp;</label></div>
+                                    </div>
+                                    <div class="flexColumn borderCountries theInput pointer" *ngFor="let border of selectedCountry.borders" [routerLink]="['/countryDetail', border]">{{border}}</div>
+                                    <div class="flexColumn" *ngIf="!selectedCountry.borders.length">-</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </ng-container>

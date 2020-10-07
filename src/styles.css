@@ -1,48 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
-
-:root,
-[data-theme="light"] {
-    --font-color: hsl(200, 15%, 8%);
-    --bg-color: hsl(0, 0%, 98%);
-    --input-color: hsl(0, 0%, 52%);
-    --element-color: hsl(0, 0%, 100%);
-}
-
-[data-theme="dark"] {
-    --font-color: hsl(0, 0%, 100%);
-    --bg-color: hsl(207, 26%, 17%);
-    --input-color: hsl(0, 0%, 52%);
-    --element-color: hsl(209, 23%, 22%);
-}
-
-body {
+.appContainer {
     background-color: var(--bg-color) !important;
     color: var(--font-color) !important;
 }
 
-.theInput {
+.appContainer .theInput {
     background-color: var(--element-color);
     color: var(--font-color) !important;
     border: 0 !important;
     box-shadow: 0 0 2px var(--input-color);
 }
 
-.theInput:focus {
+.appContainer .theInput:focus {
     box-shadow: 0 0 2px var(--input-color) !important;
 }
 
+.appContainer .theElement,
 .theElement {
     background-color: var(--element-color);
     box-shadow: 0 0 2px var(--input-color);
+    color: var(--font-color)
 }
 
-nav {
+.appContainer .bg {
+    padding: 0 80px;
+}
+
+.appContainer nav {
     border-bottom: 2px solid var(--input-color);
     background-color: var(--element-color);
 }
-
-
-/**/
 
 .backButton {
     padding: 8px 4px;
@@ -72,7 +58,6 @@ nav {
 }
 
 .flexColumn {
-    /* width: 20%; */
     margin-bottom: 30px;
 }
 
@@ -91,9 +76,6 @@ label {
 .marginTB50 {
     margin: 50px 0;
 }
-
-
-/**/
 
 * {
     font-family: 'Nunito Sans', sans-serif;
@@ -120,8 +102,6 @@ label {
     font-size: 14px;
 }
 
-.theCardBody span {}
-
 .selectedCountry h4 {
     font-weight: 800;
 }
@@ -139,12 +119,18 @@ label {
     padding-left: 35px;
 }
 
+.input-wrapper input:focus {
+    color: var(--font-color);
+    background-color: var(--element-color)
+}
+
 .input-wrapper:after {
     font-family: 'FontAwesome' !important;
     content: '\f002';
     position: absolute;
     left: 26px;
     top: 6px;
+    color: var(--font-color);
 }
 
 i {
@@ -174,15 +160,42 @@ select {
     -moz-padding-end: 20px;
 }
 
+select option::after {
+    margin: 10px;
+}
+
 .flag {
     height: 160px;
 }
 
+.pointer {
+    cursor: pointer;
+}
 
-/* @media (max-width: 578px) {
-    .countryCard {
-        -webkit-column-count: 1;
-        column-count: 1;
-        text-align: center;
-    }
-} */
+.navbar {
+    margin-bottom: 30px;
+}
+
+.navbar span {
+    color: var(--font-color);
+}
+
+.paddingR5 {
+    padding-right: 5px;
+}
+
+#themeButton {
+    display: none;
+}
+
+#themeButton+label:before {
+    content: "\f186";
+    padding-right: 5px;
+    font-family: 'FontAwesome' !important;
+}
+
+#themeButton:checked+label,
+#themeButton:checked+label:before {
+    color: var(--font-color) !important;
+    font-family: 'Nunito Sans', sans-serif;
+}
