@@ -188,11 +188,15 @@ select option::after {
     display: none;
 }
 
+#themeButton+label,
+#themeButton+label:before {
+    cursor: pointer;
+}
+
 #themeButton+label:before {
     content: "\f186";
     padding-right: 5px;
     font-family: 'FontAwesome' !important;
-    cursor: pointer;
 }
 
 #themeButton:checked+label,
