@@ -51,7 +51,7 @@
                                     <div class="flexColumn">
                                         <div><label>Border Countries: &nbsp;</label></div>
                                     </div>
-                                    <div class="flexColumn borderCountries theInput pointer" *ngFor="let border of selectedCountry.borders" [routerLink]="['/countryDetail', border]">{{border}}</div>
+                                    <div class="flexColumn borderCountries theInput pointer" *ngFor="let border of selectedCountry.borders" [routerLink]="['/countrydetail', border]">{{border}}</div>
                                     <div class="flexColumn" *ngIf="!selectedCountry.borders.length">-</div>
                                 </div>
                             </div>

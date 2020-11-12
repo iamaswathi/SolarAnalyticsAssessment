@@ -192,6 +192,7 @@ select option::after {
     content: "\f186";
     padding-right: 5px;
     font-family: 'FontAwesome' !important;
+    cursor: pointer;
 }
 
 #themeButton:checked+label,
